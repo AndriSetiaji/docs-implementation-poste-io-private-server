@@ -178,6 +178,6 @@ https://mail.DOMAIN/admin
 | TXT | _dmarc | Auto | "v=DMARC1; p=none; rua=mailto:MAIN_EMAIL@DOMAINm" |
 
 ## 🔗 8.  Useful Links & References
-🌐 [Official Poste.io Site](https://poste.io/)
-🐳 [Poste.io Docker Hub](https://hub.docker.com/r/analogic/poste.io/)
-📜 [DKIM Guide](https://dkim.org/)
+- 🌐 [Official Poste.io Site](https://poste.io/)
+- 🐳 [Poste.io Docker Hub](https://hub.docker.com/r/analogic/poste.io/)
+- 📜 [DKIM Guide](https://dkim.org/)
