@@ -45,6 +45,13 @@ graph LR
 | Disk | 10GB | 20GB+ |
 | OS | Ubuntu 20.04+ | Ubuntu 22.04 |
 
+* ⚠️ IMPORTANT: Make sure port 25 on your VPS isn't blocked by your provider. You can check with the command: telnet smtp.gmail.com 25.
+#### Open port on VPS Firewall
+```bash
+sudo ufw allow 25,80,443,110,143,465,587,993,995/tcp
+sudo ufw reload
+```
+
 ---
 
 ## 🐳 2. Docker & Docker Compose Install
@@ -63,14 +70,14 @@ cd poste
 nano docker-compose.yml
 ```
 
-```bash
+```yml
 version: '3'
 
 services:
   poste:
     image: analogic/poste.io
     container_name: poste
-    hostname: mail.heruu-js.com
+    hostname: mail.DOMAIN
     ports:
       - "25:25"
       - "110:110"
@@ -128,7 +135,6 @@ server {
 }
 ```
 
-
 ## 🌐 5. Cloudflare DNS Configuration - part 1
 
 #### 5.1 A Record (Mail Server)
@@ -158,7 +164,7 @@ https://mail.DOMAIN/admin
 ## 🌐 7. Cloudflare DNS Configuration - part 2
 #### 7.1 DKIM
 - Login Poste admin
-- Settings → Domains → heruu-js.com → DKIM → Generate Key
+- Settings → Domains → DOMAIN → DKIM → Generate Key
 - Copy TXT record
 - add into cloudflare
   
@@ -170,3 +176,8 @@ https://mail.DOMAIN/admin
 | Type | Name | TTL | Content |
 | :---: | :---: | :---: |  :---: |
 | TXT | _dmarc | Auto | "v=DMARC1; p=none; rua=mailto:MAIN_EMAIL@DOMAINm" |
+
+## 🔗 8.  Useful Links & References
+🌐 [Official Poste.io Site](https://poste.io/)
+🐳 [Poste.io Docker Hub](https://hub.docker.com/r/analogic/poste.io/)
+📜 [DKIM Guide](https://dkim.org/)
